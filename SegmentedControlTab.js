@@ -24,7 +24,7 @@ const TabOption = ({
     tabTextStyle, activeTabTextStyle,
     tabBadgeContainerStyle, activeTabBadgeContainerStyle,
     tabBadgeStyle, activeTabBadgeStyle,
-    onTabPress,
+    onTabPress, allowFontScaling,
 }) => {
     return (
         <TouchableOpacity style={[
@@ -41,7 +41,8 @@ const TabOption = ({
                     tabTextStyle,
                     isTabActive ? [styles.activeTabTextStyle, activeTabTextStyle] : {}]}
                     numberOfLines={1}
-                    ellipsizeMode="tail">
+                    ellipsizeMode="tail"
+                    allowFontScaling={allowFontScaling}>
                     {text}
                 </Text>
                 {
@@ -70,7 +71,7 @@ const SegmentedControlTab = ({
     tabTextStyle, activeTabTextStyle,
     tabBadgeContainerStyle, activeTabBadgeContainerStyle,
     tabBadgeStyle, activeTabBadgeStyle,
-    onTabPress,
+    onTabPress, allowFontScaling,
 }) => {
 
     const firstTabStyle = [{ borderRightWidth: 0, borderTopLeftRadius: borderRadius, borderBottomLeftRadius: borderRadius }]
@@ -99,7 +100,8 @@ const SegmentedControlTab = ({
                             tabBadgeContainerStyle={tabBadgeContainerStyle}
                             activeTabBadgeContainerStyle={activeTabBadgeContainerStyle}
                             tabBadgeStyle={tabBadgeStyle}
-                            activeTabBadgeStyle={activeTabBadgeStyle} />
+                            activeTabBadgeStyle={activeTabBadgeStyle}
+                            allowFontScaling={allowFontScaling} />
                     );
                 })
             }
@@ -123,7 +125,8 @@ SegmentedControlTab.propTypes = {
     activeTabBadgeContainerStyle: Text.propTypes.style,
     tabBadgeStyle: Text.propTypes.style,
     activeTabBadgeStyle: Text.propTypes.style,
-    borderRadius: PropTypes.number
+    borderRadius: PropTypes.number,
+    allowFontScaling: PropTypes.bool
 }
 
 SegmentedControlTab.defaultProps = {
@@ -142,7 +145,8 @@ SegmentedControlTab.defaultProps = {
     activeTabBadgeContainerStyle: {},
     tabBadgeStyle: {},
     activeTabBadgeStyle: {},
-    borderRadius: 5
+    borderRadius: 5,
+    allowFontScaling: true
 }
 
 const styles = StyleSheet.create({
